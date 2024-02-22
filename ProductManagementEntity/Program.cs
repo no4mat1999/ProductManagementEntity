@@ -70,6 +70,14 @@ namespace ProductManagementEntity
                 {
                     products = repo.RetriveAll();
                 }
+
+                if(products.Count == 0)
+                {
+                    Console.WriteLine("No hay productos");
+                    Console.ReadLine();
+                    return;
+                }
+
                 Console.WriteLine("\nSeleccione el ID del producto para mostrar en el visor");
                 int option = -1;
                 while (option == -1)
@@ -82,6 +90,7 @@ namespace ProductManagementEntity
                 Viewer viewer = new Viewer();
                 viewer.SetProduct(selected);
                 viewer.ShowDialog();
+                viewer.Close();
             }
             catch (Exception e)
             {
@@ -102,6 +111,13 @@ namespace ProductManagementEntity
                 using (ProductRepository repo = new ProductRepository())
                 {
                     products = repo.RetriveAll();
+                }
+
+                if (products.Count == 0)
+                {
+                    Console.WriteLine("No hay productos");
+                    Console.ReadLine();
+                    return;
                 }
 
                 Console.WriteLine("\nSeleccione el ID del producto que desea editar");
@@ -233,6 +249,13 @@ namespace ProductManagementEntity
                     products = repo.RetriveAll();
                 }
 
+                if (products.Count == 0)
+                {
+                    Console.WriteLine("No hay productos");
+                    Console.ReadLine();
+                    return;
+                }
+
                 Console.WriteLine("\nSeleccione el ID del producto que desea eliminar");
                 int option = -1;
                 while (option == -1)
@@ -260,8 +283,8 @@ namespace ProductManagementEntity
                     }
                     Console.WriteLine("Producto eliminado exitosamente. Precione ENTER para volver al menu\n");
                     Console.ReadLine();
-
                 }
+                return;
             }
             catch (Exception e)
             {
